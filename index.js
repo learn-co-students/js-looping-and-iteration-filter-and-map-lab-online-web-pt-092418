@@ -6,12 +6,19 @@ function driversWithRevenueOver(drivers, revenue) {
 }
 
 function driverNamesWithRevenueOver(drivers, revenue) {
-  let driverName;
-  return drivers.map(function(driver) {
-//debugger
-    if (driver.revenue > revenue) {
-      driverName = driver.name;
-      return driverName;
-    }
+  return driversWithRevenueOver(drivers, revenue).map(function(driver) {
+    return driver.name;
+  });
+}
+
+function exactMatch(drivers, driverObj) {
+  return drivers.filter(function(driver) {
+    return driver.revenue === driverObj.revenue || driver.name === driverObj.name;
+  });
+}
+
+function exactMatchToList(drivers, driverObj) {
+  return exactMatch(drivers, driverObj).map(function(driver) {
+    return driver.name
   });
 }
